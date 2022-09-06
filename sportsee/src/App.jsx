@@ -1,6 +1,5 @@
 import { Component } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-//import './App.scss'
 import Dashboard from './page/Dashboard'
 import User from './page/User'
 export default class App extends Component {

@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react'
-
+/**
+ * API call service by a URL
+ * @param {string} url
+ * @returns {boolean | object | string}
+ */
 export function useFetch(url) {
   const [data, setData] = useState(null)
   const [isLoading, setLoading] = useState(true)

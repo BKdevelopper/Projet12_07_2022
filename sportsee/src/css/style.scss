@@ -22,7 +22,9 @@ body {
 .main {
   min-height: 75vh;
 }
-
+.container {
+  height: 100%;
+}
 header {
   background: #020203;
   height: 91px;
@@ -52,7 +54,7 @@ aside {
   background: #020203;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   width: 11rem;
-  height: 100vh;
+  height: 70.5em;
   float: left;
   z-index: 30;
   top: 0px;
@@ -92,7 +94,7 @@ main {
     font-weight: 700;
     font-size: 5rem;
     padding-top: 2rem;
-    width: 100%;
+    // width: 100%;
     margin-left: 1rem;
     margin-right: 1rem;
     span {
@@ -121,8 +123,10 @@ main {
 .objective-score {
   position: relative;
   background-color: #fbfbfb;
+  width: 100%;
+  height: 100%;
 }
-.titleScore {
+.objective-score-title {
   position: absolute;
   margin: 0;
   top: 10px;
@@ -130,7 +134,7 @@ main {
   font-weight: bold;
 }
 @media screen and (min-width: 1024px) and (max-width: 1439px) {
-  .titleScore {
+  .objective-score-title {
     left: 0;
     top: 40px;
     font-size: 18px;
@@ -139,7 +143,7 @@ main {
     height: auto;
   }
 }
-.tauxObjectif {
+.objective-score-taux {
   position: absolute;
   margin: 0;
   top: 35%;
@@ -152,7 +156,7 @@ main {
   color: #74798c;
 }
 @media screen and (max-width: 1024px) {
-  .tauxObjectif {
+  .objective-score-taux {
     font-size: 12px;
   }
 }
@@ -167,11 +171,17 @@ main {
 }
 .spider-analytics {
   background-color: #282d30;
+  width: 100%;
+  height: 100%;
 }
 .containerPage {
-  height: 1000px;
+  height: 100%;
 }
-
+.objective-score-taux-text {
+  font-weight: 700;
+  font-size: 26px;
+  color: #000000;
+}
 // .recharts-polar-grid-concentric-polygon{
 //    fill="transparent";
 //    fill-opacity="0.5";
@@ -181,7 +191,255 @@ main {
 // }
 .DaySession {
   background-color: red;
-  height: 300px;
-  width: 30%;
-  padding-bottom: 1em;
+}
+.containerstats-number {
+  height: 100%;
+}
+.containerstats-graph {
+  width: 120em;
+  height: 46em;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  &-1 {
+    width: 20%;
+    height: 100%;
+  }
+  &-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 75%;
+    height: 100%;
+    &-top {
+      width: 100%;
+      height: 45%;
+      .Activity {
+        height: 100%;
+        width: 100%;
+        background-color: #fbfbfb;
+        border-radius: 5px;
+        padding-top: 12px;
+      }
+    }
+    &-bottom {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      height: 45%;
+      justify-content: space-between;
+      .DaySession {
+        width: 30%;
+        height: 100%;
+        border-radius: 5px;
+      }
+      .Performance {
+        width: 30%;
+        height: 100%;
+      }
+      .User {
+        width: 30%;
+        height: 100%;
+      }
+    }
+  }
+}
+.chart-title {
+  line-height: 1.5;
+  font-weight: 700;
+  font-size: 17px;
+  padding-top: 2.2rem;
+
+  margin-left: 4rem;
+  margin-right: 1rem;
+  color: white;
+  width: 48%;
+}
+.Daysession-container {
+  height: 71%;
+  width: 100%;
+}
+.container-energy {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  &-calories {
+    width: 240px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.021);
+    background-color: #fbfbfb;
+    border-radius: 5px;
+    padding: 26px;
+    &-img {
+    }
+    &-infos {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 80%;
+      padding-left: 2em;
+      &-number {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0;
+      }
+      &-title {
+        color: #74798c;
+        font-size: 14px;
+        margin: 0;
+      }
+    }
+  }
+  &-proteines {
+    width: 240px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.021);
+    background-color: #fbfbfb;
+    border-radius: 5px;
+    padding: 26px;
+    &-img {
+    }
+    &-infos {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 80%;
+      padding-left: 2em;
+      &-number {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0;
+      }
+      &-title {
+        color: #74798c;
+        font-size: 14px;
+        margin: 0;
+      }
+    }
+  }
+  &-glucides {
+    width: 240px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.021);
+    background-color: #fbfbfb;
+    border-radius: 5px;
+    padding: 26px;
+    &-img {
+    }
+    &-infos {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 80%;
+      padding-left: 2em;
+      &-number {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0;
+      }
+      &-title {
+        color: #74798c;
+        font-size: 14px;
+        margin: 0;
+      }
+    }
+  }
+  &-lipides {
+    width: 240px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.021);
+    background-color: #fbfbfb;
+    border-radius: 5px;
+    padding: 26px;
+    &-img {
+    }
+    &-infos {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 80%;
+      padding-left: 2em;
+      &-number {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0;
+      }
+      &-title {
+        color: #74798c;
+        font-size: 14px;
+        margin: 0;
+      }
+    }
+  }
+}
+.DailyActivity-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0px 0 0 25px;
+  position: absolute;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1539px) {
+  .containerstats-graph {
+    width: 100%;
+  }
+  .objective-score-title {
+    top: 12px;
+    left: 18px;
+    text-align: left;
+  }
+
+  .chart-title {
+    font-size: 1rem;
+    margin-left: 2rem;
+  }
+  .containerPage {
+    width: 100%;
+  }
+  .name-congratulations {
+    width: 85%;
+    margin: auto;
+  }
+  .containerstats {
+    width: 85%;
+    margin: auto;
+  }
+  main h2 {
+    font-size: 4rem;
+    padding-top: 1rem;
+    line-height: 1.625;
+  }
+  aside {
+    height: 57.45em;
+  }
+  .container-energy-proteines,
+  .container-energy-glucides,
+  .container-energy-lipides,
+  .container-energy-calories {
+    width: 220px;
+  }
+}
+.chart-tooltip {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+  padding: 1em 0.375em;
+  background-color: #e60000;
+  color: white;
+  font-weight: 700;
+  font-size: 0.75em;
+}
+.chart-tooltip-2 {
+  padding: 1em 0.375em;
+  background-color: white;
+  color: black;
+  font-size: 0.75em;
+  font-weight: 700;
 }

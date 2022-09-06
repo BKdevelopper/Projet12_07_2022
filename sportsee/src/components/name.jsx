@@ -1,21 +1,28 @@
 import React from 'react'
-
+/**
+ * show text
+ * @param {object} users
+ * @returns {JSX}
+ */
 const Name = (users) => {
-  const data = users.data.data
-  console.log(data)
-
-  const userInfos = data.userInfos
-  const name = userInfos.firstName
+  /**
+   * @const {array} Data (id, userInfos, todayScore, keyData)
+   * @const {array} Name (firstName, lastName)
+   * @const {string} NameInfo
+   */
+  const Data = users.data.data
+  const Name = Data.userInfos
+  const NameInfo = Name.firstName
 
   return (
     <div className="name-congratulations">
-      <h1 className="hello">
-        Bonjour <span className="firstName">{name}</span>
-      </h1>
-
-      <p className="congratulation">
-        "Félicitation! Hier, vous avez explosé vos objectifs"
-      </p>
+      <h2>
+        Bonjour
+        <span>{NameInfo}</span>
+      </h2>
+      <div className="text">
+        <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+      </div>
     </div>
   )
 }

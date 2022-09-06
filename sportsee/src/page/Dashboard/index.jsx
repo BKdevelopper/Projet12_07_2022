@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function Dashboard() {
   return (
     <div className="container">
@@ -24,6 +26,12 @@ function Dashboard() {
         <div className="text">
           <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
         </div>
+        <Link to="/stats/12" className="user12Btn userBtn">
+          User-12
+        </Link>
+        <Link to="/stats/18" className="user18Btn userBtn">
+          User-18
+        </Link>
       </main>
     </div>
   )

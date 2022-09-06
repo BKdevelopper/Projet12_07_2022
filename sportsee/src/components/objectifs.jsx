@@ -1,14 +1,22 @@
 import React from 'react'
 import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts'
-
+/**
+ * Show score chart
+ * @param {object} user
+ * @returns {JSX}
+ */
 const ObjectifScore = (user) => {
-  const dataScore = user.data.data
-  const scoreData = dataScore.todayScore * 100 || dataScore.score * 100
-  console.log(scoreData)
-  const dataTodayScore = [
+  /**
+   * @const {object} ScoreData
+   * @const {number} CalcScore
+   * @const {array} TableTodayScore
+   */
+  const ScoreData = user.data.data
+  const CalcScore = ScoreData.todayScore * 100 || ScoreData.score * 100
+  const TableTodayScore = [
     {
       name: 'A1',
-      uv: scoreData,
+      uv: CalcScore,
       pv: 2400,
       fill: 'red',
     },
@@ -22,20 +30,19 @@ const ObjectifScore = (user) => {
 
   return (
     <div className="objective-score">
-      <p className="titleScore">Score</p>
-      <p className="tauxObjectif">
-        <span style={{ fontWeight: 700, fontSize: 26, color: '#000000' }}>
-          {scoreData}%
-        </span>{' '}
-        de votre objectif
+      <p className="objective-score-title">Score</p>
+      <p className="objective-score-taux">
+        <span className="objective-score-taux-text">{CalcScore}%</span> de votre
+        objectif
       </p>
+
       <ResponsiveContainer width="100%" height="100%">
         <RadialBarChart
           width={730}
           height={250}
           innerRadius={80}
           outerRadius={100}
-          data={dataTodayScore}
+          data={TableTodayScore}
           startAngle={90}
           endAngle={360}
           fill="white"

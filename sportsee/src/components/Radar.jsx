@@ -5,15 +5,22 @@ import {
   PolarGrid,
   PolarAngleAxis,
   ResponsiveContainer,
-  Legend,
-  PolarRadiusAxis,
-  Text,
 } from 'recharts'
 
+/**
+ * Show radar chart
+ * @param {object} performance
+ * @returns {JSX}
+ */
 const RadarCharts = (performance) => {
-  const radarData = performance.data.data
-
-  const DataRadarTitle = radarData.data.map((data) => {
+  /**
+   * @const {object} DataPerformance (data, kind, userId )
+   */
+  const DataPerformance = performance.data.data
+  /**
+   * @description Conversion of number data kind of array into number kind of object(object value string)
+   */
+  const DataPerformanceTitle = DataPerformance.data.map((data) => {
     switch (data.kind) {
       case 1:
         return { ...data, kind: 'Intensité' }
@@ -35,14 +42,13 @@ const RadarCharts = (performance) => {
   return (
     <div className="spider-analytics">
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart cx="50%" cy="50%" outerRadius="65%" data={DataRadarTitle}>
-          <PolarGrid
-          // fill="#282d30"
-          // fillOpacity={0.5}
-          //stroke="none"
-          // strokeOpacity={1}
-          // strokeWidth={1}
-          />
+        <RadarChart
+          cx="50%"
+          cy="50%"
+          outerRadius="65%"
+          data={DataPerformanceTitle}
+        >
+          <PolarGrid radialLines={false} />
           <PolarAngleAxis
             dataKey="kind"
             stroke="white"
@@ -54,11 +60,10 @@ const RadarCharts = (performance) => {
             fillOpacity={0.6}
             legendType="none"
           />
-          <Legend />
         </RadarChart>
       </ResponsiveContainer>
     </div>
   )
 }
-//jeudi 17h 18/02/2020
+
 export default RadarCharts

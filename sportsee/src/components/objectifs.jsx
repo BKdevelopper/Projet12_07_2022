@@ -1,17 +1,24 @@
 import React from 'react'
 import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts'
+import configuration from '../configuration'
 /**
  * Show score chart
  * @param {object} user
  * @returns {JSX}
  */
-const ObjectifScore = (user) => {
+const ObjectifScore = (dataObjectifScore) => {
   /**
    * @const {object} ScoreData
    * @const {number} CalcScore
    * @const {array} TableTodayScore
    */
-  const ScoreData = user.data.data
+  const { mockedData } = configuration
+  let ScoreData
+  if (mockedData) {
+    ScoreData = dataObjectifScore.dataObjectifScore
+  } else {
+    ScoreData = dataObjectifScore.dataObjectifScore.data
+  }
   const CalcScore = ScoreData.todayScore * 100 || ScoreData.score * 100
   const TableTodayScore = [
     {

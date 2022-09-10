@@ -1,5 +1,5 @@
 import React from 'react'
-
+import configuration from '../configuration'
 /**
  * Show Energy stats
  * @param {array | number} user
@@ -8,9 +8,14 @@ import React from 'react'
  * @returns {JSX}
  */
 
-const Energy = (user) => {
-  const Data = user.data.data
-  const DataUser = Data.keyData
+const Energy = (dataEnergy) => {
+  const { mockedData } = configuration
+  let DataUser
+  if (mockedData) {
+    DataUser = dataEnergy.dataEnergy.keyData
+  } else {
+    DataUser = dataEnergy.dataEnergy.data.keyData
+  }
 
   return (
     <div className="container-energy">

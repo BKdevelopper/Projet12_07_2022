@@ -436,3 +436,26 @@ main {
   font-size: 0.75em;
   font-weight: 700;
 }
+@-webkit-keyframes color-change-2x {
+  0% {
+    background: lightgray;
+  }
+  100% {
+    background: rgb(137, 139, 141);
+  }
+}
+@keyframes color-change-2x {
+  0% {
+    background: lightgray;
+  }
+  100% {
+    background: rgb(137, 139, 141);
+  }
+}
+.loader {
+  -webkit-animation: color-change-2x 1s linear infinite alternate both;
+  animation: color-change-2x 1s linear infinite alternate both;
+  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+}

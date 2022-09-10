@@ -7,18 +7,27 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 import React from 'react'
+import configuration from '../configuration'
 /**
  * show day session
  * @param {object} session
  * @returns {JSX}
  */
-const DaySessions = (session) => {
+const DaySessions = (dataSession) => {
   /**
    * @const {object} DaySessionsData (data, kind, userId )
    * @const {array} DaySessionsTime (time)
    */
-  const DaySessionsData = session.data.data
-  const DaySessionsTime = DaySessionsData.sessions
+  const { mockedData } = configuration
+  let DaySessionsTime
+  if (mockedData) {
+    console.log(dataSession)
+    DaySessionsTime = dataSession.dataSession
+  } else {
+    DaySessionsTime = dataSession.dataSession.data.sessions
+  }
+  //const DaySessionsData = session.data.data
+  //const DaySessionsTime = DaySessionsData.sessions
 
   /**
    * @description Conversion of number into days over a week

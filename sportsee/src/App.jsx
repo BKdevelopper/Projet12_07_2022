@@ -1,5 +1,10 @@
 import { Component } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom'
 import Dashboard from './page/Dashboard'
 import User from './page/User'
 export default class App extends Component {
@@ -8,8 +13,8 @@ export default class App extends Component {
       <Router>
         <div className="main">
           <Routes>
-            <Route path="/" exact element={<Dashboard />} />
-            <Route path="/stats/:userId" element={<User />} />
+            <Route path="/stats/:id" element={<User />} />
+            <Route path="*" element={<Dashboard />} />
           </Routes>
         </div>
       </Router>

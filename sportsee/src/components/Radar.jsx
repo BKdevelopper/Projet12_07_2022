@@ -6,17 +6,24 @@ import {
   PolarAngleAxis,
   ResponsiveContainer,
 } from 'recharts'
-
+import configuration from '../configuration'
 /**
  * Show radar chart
  * @param {object} performance
  * @returns {JSX}
  */
-const RadarCharts = (performance) => {
+const RadarCharts = (dataPerformance) => {
   /**
    * @const {object} DataPerformance (data, kind, userId )
    */
-  const DataPerformance = performance.data.data
+  const { mockedData } = configuration
+  let DataPerformance
+  if (mockedData) {
+    DataPerformance = dataPerformance.dataPerformance
+  } else {
+    DataPerformance = dataPerformance.dataPerformance.data
+  }
+
   /**
    * @description Conversion of number data kind of array into number kind of object(object value string)
    */

@@ -7,6 +7,9 @@ import ObjectifScore from '../../components/objectifs'
 import RadarCharts from '../../components/Radar'
 import DaySessions from '../../components/DaySession'
 import Activity from '../../components/Activity'
+import { useApi } from '../../services/DashboardAPI'
+import Loader from '../../components/Loader'
+import Error from '../../components/Error'
 /**
  * Show user page
  * @returns {JSX}
@@ -19,17 +22,11 @@ const User = () => {
    * @const {array} performance - Get user performance
    * @const {array} activity - Get user activity
    */
-  const { userId } = useParams()
-  const { data: user } = useFetch(`http://localhost:3000/user/${userId}`)
-  const { data: session } = useFetch(
-    `http://localhost:3000/user/${userId}/average-sessions`
-  )
-  const { data: performance } = useFetch(
-    `http://localhost:3000/user/${userId}/performance`
-  )
-  const { data: activity } = useFetch(
-    `http://localhost:3000/user/${userId}/activity`
-  )
+  const { id } = useParams()
+  const { data } = useApi('GET_USER_MAIN_DATA', parseInt(id))
+  const { data: activity } = useApi('GET_USER_ACTIVITY', parseInt(id))
+  const { data: performance } = useApi('GET_USER_PERFORMANCE', parseInt(id))
+  const { data: session } = useApi('GET_USER_AVERAGE_SESSIONS', parseInt(id))
 
   return (
     <div className="container">
@@ -50,29 +47,32 @@ const User = () => {
       </aside>
       <main>
         <div className="containerPage">
-          {user && <Name data={user} />}
+          {data && <Name userId={data} />}
+
           <div className="containerstats">
             <div className="containerstats-graph">
               <div className="containerstats-graph-1">
                 <div className="containerstats-number">
-                  {user && <Energy data={user} />}
+                  {data && <Energy dataEnergy={data} />}
                 </div>
               </div>
               <div className="containerstats-graph-2">
                 <div className="containerstats-graph-2-top">
                   <section className="Activity">
-                    {activity && <Activity data={activity} />}
+                    {activity && <Activity dataActivity={activity} />}
                   </section>
                 </div>
                 <div className="containerstats-graph-2-bottom">
                   <section className="DaySession">
-                    {session && <DaySessions data={session} />}
+                    {session && <DaySessions dataSession={session} />}
                   </section>
                   <section className="Performance">
-                    {performance && <RadarCharts data={performance} />}
+                    {performance && (
+                      <RadarCharts dataPerformance={performance} />
+                    )}
                   </section>
                   <section className="User">
-                    {user && <ObjectifScore data={user} />}
+                    {data && <ObjectifScore dataObjectifScore={data} />}
                   </section>
                 </div>
               </div>

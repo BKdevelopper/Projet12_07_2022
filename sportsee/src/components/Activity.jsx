@@ -9,7 +9,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts'
-
+import configuration from '../configuration'
 /**
  * Show activity chart
  * @param {object} Data
@@ -19,9 +19,15 @@ import {
  * @return {JSX}
  */
 
-const Activity = (activity) => {
-  const Data = activity.data.data
-  const Sessions = Data.sessions
+const Activity = (dataActivity) => {
+  const { mockedData } = configuration
+  let Sessions
+  if (mockedData) {
+    Sessions = dataActivity.dataActivity
+  } else {
+    Sessions = dataActivity.dataActivity.data.sessions
+  }
+
   const ActivityDay = Sessions.map((data) => {
     switch (new Date(data.day).getDate()) {
       case 1:

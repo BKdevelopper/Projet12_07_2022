@@ -1,24 +1,14 @@
 import React from 'react'
-import { useApi } from '../services/DashboardAPI'
 import Loader from './Loader'
 import configuration from '../configuration'
+import PropTypes from 'prop-types'
 /**
  * show text
- * @param {object} users
+ * @param {object | array} userId
  * @returns {JSX}
  */
-const Name = (userId) => {
-  /**
-   * @const {array} Data (id, userInfos, todayScore, keyData)
-   * @const {array} Name (firstName, lastName)
-   * @const {string} NameInfo
-   */
-  // const Data = users.data.data
-  // const Name = Data.userInfos
-  // const NameInfo = Name.firstName
+const Name = ({ userId }) => {
   const { mockedData } = configuration
-  // console.log(userId.userId.userInfos.firstName)
-  //console.log(userId.userId.data.userInfos.firstName)
 
   if (userId) {
     return (
@@ -27,8 +17,8 @@ const Name = (userId) => {
           Bonjour
           <span>
             {!mockedData
-              ? userId.userId.data.userInfos.firstName
-              : userId.userId.userInfos.firstName}
+              ? userId.data.userInfos.firstName
+              : userId.userInfos.firstName}
           </span>
         </h2>
         <div className="text">
@@ -42,3 +32,7 @@ const Name = (userId) => {
 }
 
 export default Name
+
+Name.propTypes = {
+  userId: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+}

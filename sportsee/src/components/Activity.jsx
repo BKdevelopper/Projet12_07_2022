@@ -10,22 +10,21 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 import configuration from '../configuration'
+import PropTypes from 'prop-types'
+
 /**
- * Show activity chart
- * @param {object} Data
- * @const {array | number} Data
- * @const {array | number} Sessions
- * @const {array | number} ActivityDay
- * @return {JSX}
+ * Show chart activity
+ * @param {array | object} dataActivity
+ * @returns {JSX} Returns the desired component
  */
 
-const Activity = (dataActivity) => {
+const Activity = ({ dataActivity }) => {
   const { mockedData } = configuration
   let Sessions
   if (mockedData) {
-    Sessions = dataActivity.dataActivity
+    Sessions = dataActivity
   } else {
-    Sessions = dataActivity.dataActivity.data.sessions
+    Sessions = dataActivity.data.sessions
   }
 
   const ActivityDay = Sessions.map((data) => {
@@ -62,8 +61,12 @@ const Activity = (dataActivity) => {
         <div>{payload[1].value}kCal</div>
       </div>
     ) : null
-
+  CustomTooltip.propTypes = {
+    active: PropTypes.bool,
+    payload: PropTypes.array,
+  }
   /**
+   * Insert value in the tooltip
    * @param {color} value
    * @returns {HTML} Returns the desired color
    */
@@ -126,3 +129,7 @@ const Activity = (dataActivity) => {
 }
 
 export default Activity
+
+Activity.propTypes = {
+  dataActivity: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+}

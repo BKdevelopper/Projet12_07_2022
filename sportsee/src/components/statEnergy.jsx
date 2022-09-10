@@ -1,20 +1,19 @@
 import React from 'react'
 import configuration from '../configuration'
+import PropTypes from 'prop-types'
 /**
  * Show Energy stats
- * @param {array | number} user
- * @const {array} Data (id, userInfos, todayScore, keyData)
- * @const {array} DataUser (calorieCount, proteinCount, carbohydrateCount, lipidCount)
+ * @param {array | object} dataEnergy
  * @returns {JSX}
  */
 
-const Energy = (dataEnergy) => {
+const Energy = ({ dataEnergy }) => {
   const { mockedData } = configuration
   let DataUser
   if (mockedData) {
-    DataUser = dataEnergy.dataEnergy.keyData
+    DataUser = dataEnergy.keyData
   } else {
-    DataUser = dataEnergy.dataEnergy.data.keyData
+    DataUser = dataEnergy.data.keyData
   }
 
   return (
@@ -79,3 +78,7 @@ const Energy = (dataEnergy) => {
 }
 
 export default Energy
+
+Energy.propTypes = {
+  dataEnergy: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+}

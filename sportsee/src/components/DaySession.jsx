@@ -8,30 +8,20 @@ import {
 } from 'recharts'
 import React from 'react'
 import configuration from '../configuration'
+import PropTypes from 'prop-types'
 /**
  * show day session
- * @param {object} session
+ * @param {object | array} dataSession
  * @returns {JSX}
  */
-const DaySessions = (dataSession) => {
-  /**
-   * @const {object} DaySessionsData (data, kind, userId )
-   * @const {array} DaySessionsTime (time)
-   */
+const DaySessions = ({ dataSession }) => {
   const { mockedData } = configuration
   let DaySessionsTime
   if (mockedData) {
-    console.log(dataSession)
-    DaySessionsTime = dataSession.dataSession
+    DaySessionsTime = dataSession
   } else {
-    DaySessionsTime = dataSession.dataSession.data.sessions
+    DaySessionsTime = dataSession.data.sessions
   }
-  //const DaySessionsData = session.data.data
-  //const DaySessionsTime = DaySessionsData.sessions
-
-  /**
-   * @description Conversion of number into days over a week
-   */
   let data = DaySessionsTime.map((data) => {
     switch (data.day) {
       case 1:
@@ -65,6 +55,10 @@ const DaySessions = (dataSession) => {
         <div>{payload[0].value} min</div>
       </div>
     ) : null
+  CustomTooltip.propTypes = {
+    active: PropTypes.bool,
+    payload: PropTypes.array,
+  }
   return (
     <>
       <h2 className="chart-title">Durée moyenne des sessions</h2>
@@ -102,3 +96,7 @@ const DaySessions = (dataSession) => {
 }
 
 export default DaySessions
+
+DaySessions.propTypes = {
+  dataSession: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+}

@@ -6,10 +6,15 @@ import {
   USER_PERFORMANCE_MOCKED,
 } from '../dataMocked'
 import configuration from '../configuration'
-const { API, mockedData, delay } = configuration
+const { API, mockedData } = configuration
 
 const urlAPI = API
-
+/**
+ * Factory for retrive valid query depends on his service
+ * @param {String} URL - Service to call
+ * @param {Int} IDUser - User id
+ * @returns {String} url for making api calls
+ */
 function getDifferentsServices(URL, IDUser) {
   switch (URL) {
     case 'GET_USER_ACTIVITY':
@@ -30,6 +35,12 @@ function getDifferentsServices(URL, IDUser) {
       return null
   }
 }
+/**
+ * Factory for retrive valid query depends on his service mocked
+ * @param {String} URL - Service to call
+ * @param {Int} IDUser - User id
+ * @returns {Array} url for making api calls
+ */
 function getDifferentsServicesMocked(URL, IDUser) {
   switch (URL) {
     case 'GET_USER_ACTIVITY':
@@ -55,11 +66,17 @@ function getDifferentsServicesMocked(URL, IDUser) {
       return null
   }
 }
+/**
+ * Custom hook for get data from an API
+ * @param {String} URL - Service to call
+ * @param {Int} IDUser - User id
+ * @returns {Object} Call results
+ */
 export const useApi = (URL, IDUser) => {
   const [status, setStatus] = useState(0)
   const [statusText, setStatusText] = useState('')
   const [data, setData] = useState()
-  const [error, setError] = useState()
+  const [error, setError] = useState(null)
   const [loading, setLoading] = useState()
 
   const request = getDifferentsServices(URL, IDUser)
@@ -83,7 +100,7 @@ export const useApi = (URL, IDUser) => {
           setData(requestMocked)
         }
       } catch (error) {
-        setError(error)
+        setError(error.message)
       }
       setLoading(false)
     }

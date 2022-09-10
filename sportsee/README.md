@@ -14,6 +14,8 @@ _Read the documentation on readme to launch API_
 
 4. During the opening of the project, you will be asked to confirm the opening on another port. Answer yes (y), the opening will continue to run on the port: http://localhost:3001 of your browser.
 
+5. You can config URL of API and config data's mocked on the file configuration.js
+
 ## Prerequisite:
 
 | Name   | Version |
@@ -31,3 +33,4 @@ _Read the documentation on readme to launch API_
 | react-router-dom | 6.3.0   |
 | react-scripts    | 5.0.1   |
 | recharts         | 2.1.13  |
+| props-types      | 15.8.1  |

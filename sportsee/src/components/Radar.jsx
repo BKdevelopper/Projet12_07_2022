@@ -7,26 +7,21 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 import configuration from '../configuration'
+import PropTypes from 'prop-types'
 /**
  * Show radar chart
- * @param {object} performance
+ * @param {object | array} dataPerformance
  * @returns {JSX}
  */
-const RadarCharts = (dataPerformance) => {
-  /**
-   * @const {object} DataPerformance (data, kind, userId )
-   */
+const RadarCharts = ({ dataPerformance }) => {
   const { mockedData } = configuration
   let DataPerformance
   if (mockedData) {
-    DataPerformance = dataPerformance.dataPerformance
+    DataPerformance = dataPerformance
   } else {
-    DataPerformance = dataPerformance.dataPerformance.data
+    DataPerformance = dataPerformance.data
   }
 
-  /**
-   * @description Conversion of number data kind of array into number kind of object(object value string)
-   */
   const DataPerformanceTitle = DataPerformance.data.map((data) => {
     switch (data.kind) {
       case 1:
@@ -74,3 +69,7 @@ const RadarCharts = (dataPerformance) => {
 }
 
 export default RadarCharts
+
+RadarCharts.propTypes = {
+  dataPerformance: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+}

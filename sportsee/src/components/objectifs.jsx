@@ -1,23 +1,19 @@
 import React from 'react'
 import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts'
 import configuration from '../configuration'
+import PropTypes from 'prop-types'
 /**
  * Show score chart
- * @param {object} user
+ * @param {object | array} dataObjectifScore
  * @returns {JSX}
  */
-const ObjectifScore = (dataObjectifScore) => {
-  /**
-   * @const {object} ScoreData
-   * @const {number} CalcScore
-   * @const {array} TableTodayScore
-   */
+const ObjectifScore = ({ dataObjectifScore }) => {
   const { mockedData } = configuration
   let ScoreData
   if (mockedData) {
-    ScoreData = dataObjectifScore.dataObjectifScore
+    ScoreData = dataObjectifScore
   } else {
-    ScoreData = dataObjectifScore.dataObjectifScore.data
+    ScoreData = dataObjectifScore.data
   }
   const CalcScore = ScoreData.todayScore * 100 || ScoreData.score * 100
   const TableTodayScore = [
@@ -62,3 +58,7 @@ const ObjectifScore = (dataObjectifScore) => {
 }
 
 export default ObjectifScore
+
+ObjectifScore.propTypes = {
+  dataObjectifScore: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+}

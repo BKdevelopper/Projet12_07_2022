@@ -21,7 +21,7 @@ function Dashboard() {
       <main>
         <h2>
           Bonjour
-          <span>Thomas</span>
+          <span>Lucas</span>
         </h2>
         <div className="text">
           <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
